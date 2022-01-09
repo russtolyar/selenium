@@ -35,10 +35,9 @@ public class CatalogOnlinerWebTest implements IAbstractTest {
         String currencyScore = catalogPage.getCurrencyWidget().getCurrencyScore();
 
         String regex = "[^0-9,]";
-        String regex1 = "[\\d*\\,\\d*]";
-        String regex2 = "[^0123456789,.]";
 
         currencyScore = currencyScore.replaceAll(regex, "");
+        currencyScore = currencyScore.replaceAll("[,]",".");
         double currencyDouble = Double.parseDouble(currencyScore);
         Assert.assertTrue(1 < currencyDouble && currencyDouble < 10);
     }
